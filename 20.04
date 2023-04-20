@@ -1,0 +1,56 @@
+import RPi.GPIO as GPIO
+import time
+
+# Setze die Pins für den Ultraschall-Abstandssensor
+TRIG_PIN = 17
+ECHO_PIN = 27
+
+# Setze die Pins für die LED
+LED_PIN = 18
+
+# Initialisiere die GPIO-Pins
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(TRIG_PIN, GPIO.OUT)
+GPIO.setup(ECHO_PIN, GPIO.IN)
+GPIO.setup(LED_PIN, GPIO.OUT)
+
+def messe_entfernung():
+    # Sende ein Trigger-Signal
+    GPIO.output(TRIG_PIN, True)
+    time.sleep(0.00001)
+    GPIO.output(TRIG_PIN, False)
+    
+    # Warte auf das ECHO-Signal
+    while GPIO.input(ECHO_PIN) == 0:
+        pulse_start = time.time()
+    while GPIO.input(ECHO_PIN) == 1:
+        pulse_end = time.time()
+        
+    # Berechne die Entfernung in cm
+    pulse_duration = pulse_end - pulse_start
+    distance = pulse_duration * 17150
+    distance = round(distance, 2)
+    
+    return distance
+
+try:
+    while True:
+        # Messe die Entfernung
+        distance = messe_entfernung()
+        
+        # Überprüfe, ob die Entfernung kleiner als 10 cm ist
+        if distance < 10:
+            print("Gefahr, bitte bremsen")
+            GPIO.output(LED_PIN, GPIO.HIGH) # LED einschalten
+        else:
+            print("Alles gut")
+            GPIO.output(LED_PIN, GPIO.LOW) # LED ausschalten
+        
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    pass
+
+finally:
+    # Beende das Programm und setze die GPIO-Pins zurück
+    GPIO.cleanup()
