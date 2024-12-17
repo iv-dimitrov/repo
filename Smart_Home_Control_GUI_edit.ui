@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>dialog_device_edit</class>
+ <widget class="QDialog" name="dialog_device_edit">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>50</y>
+     <width>271</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="grid_edit">
+    <item row="0" column="0">
+     <widget class="QLabel" name="lbl_edit_device_name">
+      <property name="text">
+       <string>Device Name:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="lbl_edit_device_location">
+      <property name="text">
+       <string>Device Location:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="lbl_edit_device_type">
+      <property name="text">
+       <string>Device Type:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="le_edit_device_name"/>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="le_edit_device_type"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="le_edit_device_location"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="btn_edit_delete">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>220</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete</string>
+   </property>
+  </widget>
+  <widget class="QDialogButtonBox" name="dglBtn_edit">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>220</y>
+     <width>156</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
